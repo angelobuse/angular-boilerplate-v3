@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <form [formGroup]="projForm" (ngSubmit)="submitProjDetails()">
+      <div class="form-group">
+        <input type="text"
+          name="projName"
+          class="form-control"
+          placeholder="Enter project name"
+          formControlName="projName">
+          <p
+            class="errorMessage"
+            *ngIf="!projForm.get('projName').valid && projForm.get('projName').touched">Please enter a valid project name!</p>
+      </div>
+      <div class="form-group">
+        <input type="email"
+          name="email"
+          class="form-control"
+          placeholder="Enter email"
+          formControlName="email">
+          <p
+            class="errorMessage"
+            *ngIf="!projForm.get('email').valid && projForm.get('email').touched">Please enter a valid email address!</p>
+      </div>
+      <div class="form-group">
+        <select name="status"
+          class="form-control"
+          formControlName="status">
+          <option *ngFor="let status of statuses"
+            [value]="status">{{status}}</option>
+        </select>
+        <p
+          class="errorMessage"
+          *ngIf="!projForm.get('status').valid && projForm.get('status').touched">Please select a project status</p>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

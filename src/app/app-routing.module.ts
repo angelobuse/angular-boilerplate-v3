@@ -1,3 +1,4 @@
+import { PracticalsComponent } from './forms/practicals/practicals.component';
 import { OtherFormComponent } from './forms/other-form/other-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -30,6 +31,7 @@ const routes: Routes = [
     path: 'forms', component: FormsComponent, children: [
       { path: 'template-driven-form', component: TemplateDrivenComponent },
       { path: 'reactive-form', component: OtherFormComponent },
+      { path: 'form-practicals', component: PracticalsComponent }
     ]
   },
 

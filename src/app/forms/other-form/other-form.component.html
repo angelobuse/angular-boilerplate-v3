@@ -4,17 +4,43 @@
 
   <div class="row">
     <div class="col-md-8">
-      <form >
-        <div class="form-group">
-          <label for="username">Enter your username</label>
-          <input type="text" name="username" id="" class="form-control">
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" >
+
+        <!-- Form group of user data -->
+        <div formGroupName="userData">
+          <div class="form-group">
+            <input type="text"
+              placeholder="Enter your username"
+              name="username"
+              formControlName="username"
+              class="form-control">
+              <p
+              class="errorMessage"
+              *ngIf="!signupForm.get('userData.username').valid && signupForm.get('userData.username').touched">
+              Please enter a valid username!</p>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="Please enter your email address"
+              name="email"
+              formControlName="email"
+              class="form-control">
+              <p
+              class="errorMessage"
+              *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">
+              Please enter a valid email address!</p>
+          </div>
+        </div>
+        <!-- End form group of userdat -->
+
+        <div  *ngFor="let gender of genders">
+          <input type="radio"
+            formControlName="gender"
+            [value]="gender">{{gender}}
         </div>
         <div class="form-group">
-          <label for="email">Please enter your email address</label>
-          <input type="text" name="email" id="" class="form-control">
-        </div>
-        <div class="form-group">
-          <button type="button" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success">Submit</button>
         </div>
       </form>
     </div>
